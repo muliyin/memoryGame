@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="./css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
 </head>
@@ -17,66 +17,97 @@
 
         <section class="score-panel">
         	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="icon-star"></i></li>
+        		<li><i class="icon-star"></i></li>
+        		<li><i class="icon-star"></i></li>
         	</ul>
 
-        	<span class="moves">3</span> Moves
+        	<span class="moves">0</span> Moves
 
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
+            <div class="restart" onclick="restartGame()">
+        		<i class="icon-repeat"></i>&nbsp;重新开始
         	</div>
         </section>
 
         <ul class="deck">
+            <!--1-->
             <li class="card">
-                <i class="fa fa-diamond"></i>
+                <i class="icon-magic"></i>
             </li>
+
+            <!--2-->
             <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
+                <i class="icon-camera"></i>
             </li>
-            <li class="card match">
-                <i class="fa fa-anchor"></i>
-            </li>
+
+            <!--3-->
             <li class="card">
-                <i class="fa fa-bolt"></i>
+                <i class="icon-food"></i>
             </li>
+
+            <!--4-->
             <li class="card">
-                <i class="fa fa-cube"></i>
+                <i class="icon-gift"></i>
             </li>
-            <li class="card match">
-                <i class="fa fa-anchor"></i>
-            </li>
+
+            <!--5-->
             <li class="card">
-                <i class="fa fa-leaf"></i>
+                <i class="icon-coffee"></i>
             </li>
+
+            <!--6-->
             <li class="card">
-                <i class="fa fa-bicycle"></i>
+                <i class="icon-key"></i>
             </li>
+
+            <!--7-->
             <li class="card">
-                <i class="fa fa-diamond"></i>
+                <i class="icon-github"></i>
             </li>
+
+            <!--8-->
             <li class="card">
-                <i class="fa fa-bomb"></i>
+                <i class="icon-google-plus"></i>
             </li>
+
+            <!--9-->
             <li class="card">
-                <i class="fa fa-leaf"></i>
+                <i class="icon-google-plus"></i>
             </li>
+
+            <!--10-->
             <li class="card">
-                <i class="fa fa-bomb"></i>
+                <i class="icon-key"></i>
             </li>
-            <li class="card open show">
-                <i class="fa fa-bolt"></i>
-            </li>
+
+            <!--11-->
             <li class="card">
-                <i class="fa fa-bicycle"></i>
+                <i class="icon-magic"></i>
             </li>
+
+            <!--12-->
             <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
+                <i class="icon-food"></i>
             </li>
+
+            <!--13-->
             <li class="card">
-                <i class="fa fa-cube"></i>
+                <i class="icon-gift"></i>
+            </li>
+
+            <!--14-->
+            <li class="card">
+                <i class="icon-camera"></i>
+            </li>
+
+            <!--15-->
+            <li class="card">
+                <i class="icon-github"></i>
+            </li>
+
+            <!--16-->
+            <li class="card">
+                <i class="icon-coffee"></i>
             </li>
         </ul>
     </div>
