@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SUCCESS!</title>
+
+    <link rel="stylesheet prefetch" href="./css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body onload="showResults()">
+<div class="container">
+    <header>
+        <h1> WIN !</h1>
+    </header>
+    <section class="win_box">
+        共获得：
+        <ul class="stars" id="totalStars">
+            <li><i class="icon-star"></i></li>
+            <li><i class="icon-star"></i></li>
+            <li><i class="icon-star"></i></li>
+        </ul>
+
+        <div class="total_moves">
+            共走了：<span class="moves" id="totalMove">0</span> Moves
+        </div>
+
+
+        <div class="total_time">
+            共耗时：<span class="time" id="totalTime">0</span>s
+        </div>
+
+    </section>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
