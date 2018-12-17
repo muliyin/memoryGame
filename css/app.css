@@ -87,23 +87,41 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 500px;
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+.win_box {
+    text-align: left;
+    width: 150px;
+}
+
+.win_box .stars, .total_moves, .total_time{
+    display: block;
+}
+
+.score-panel .stars, .win_box .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel .stars li, .win_box .stars li {
     list-style: none;
     display: inline-block;
 }
 
-.score-panel .restart {
+.score-panel .restart, .start, .time_out {
     float: right;
     cursor: pointer;
+}
+
+.start, .restart {
+    margin-right: 20px;
+}
+
+.spend_time {
+    margin: 0 10px;
+    display: inline;
 }
