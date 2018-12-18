@@ -9,6 +9,7 @@ let cardIcon2;  /*翻开卡片2的图标*/
 let count = 0;  /*翻开卡片计数*/
 let matchedCount = 0;/*记录翻开的卡片对数*/
 let totalTime = 0;  /*记录总时长*/
+let begin = false;   /*判断用户是否开始游戏*/
 
 /*刷新页面重新开始游戏*/
 function restartGame() {
@@ -85,6 +86,9 @@ function closeCard() {
 		/*一致则记录*/
 		matchedCount ++;
 		if (matchedCount === 8){
+			sessionStorage.setItem('totalMove',JSON.stringify(moves));
+			sessionStorage.setItem('totalTime',JSON.stringify(document.querySelector('#game .time').textContent));
+			win();
 			/*清除计时器*/
 			clearInterval(startTime);
 		}
@@ -93,43 +97,51 @@ function closeCard() {
 
 /*点击卡片的监听事件*/
 function clickCard(event) {
-	let target = event.target;
-	/*根据计数count判断现在翻开的是第一张还是第二张牌*/
-	if (count === 0) {
-		openCard1 = target;
-		cardIcon1 = openCard1.childNodes[1].className
-	} else if (count === 1) {
-		openCard2 = target;
-		cardIcon2 = openCard2.childNodes[1].className
-	}
-	/*判断点击的是否为li卡片，以及卡片是否为合上状态*/
-	if (target.nodeName === 'LI' && target.classList.length === 1) {
-		/*li增加class，卡片处于翻开状态*/
-		target.classList.add('open');
-		target.classList.add('show');
-		moves++;
-		count += 1;
-		document.querySelector('#game .moves').textContent = moves;
-	}
-	if (count === 2) {
-		closeCard();
-		if (moves === 24 || moves === 40){
-			removeStars();
+	if (begin === true){
+		let target = event.target;
+		/*根据计数count判断现在翻开的是第一张还是第二张牌*/
+		if (count === 0) {
+			openCard1 = target;
+			cardIcon1 = openCard1.childNodes[1].className
+		} else if (count === 1) {
+			openCard2 = target;
+			cardIcon2 = openCard2.childNodes[1].className
+		}
+		/*判断点击的是否为li卡片，以及卡片是否为合上状态*/
+		if (target.nodeName === 'LI' && target.classList.length === 1) {
+			/*li增加class，卡片处于翻开状态*/
+			target.classList.add('open');
+			target.classList.add('show');
+			moves++;
+			count += 1;
+			document.querySelector('#game .moves').textContent = moves;
+		}
+		if (count === 2) {
+			closeCard();
+			if (moves === 24 || moves === 40){
+				removeStars();
+			}
 		}
 	}
+
 }
 
 /*游戏成功*/
 function win() {
-
 	window.open('win.html','newwindow','height = 400, width = 600, top = 100, left = 400, toolbar = 0, menubar = 0, scrollbars = 0, resizable = no, location = no, status = no');
-
-
 }
 
+/*展示游戏结果*/
 function showResults() {
-	document.querySelector('#totalMove').textContent = moves;
-	document.querySelector('#totalTime').textContent = document.querySelector('.time').textContent;
+	document.querySelector('#totalMove').textContent = JSON.parse(sessionStorage.getItem('totalMove'));
+	document.querySelector('#totalTime').textContent = JSON.parse(sessionStorage.getItem('totalTime'));
+	let totalMove = JSON.parse(sessionStorage.getItem('totalMove'));
+	if (totalMove > 39){
+		document.querySelector('#totalStars').firstElementChild.remove();
+		document.querySelector('#totalStars').firstElementChild.remove();
+	} else if (totalMove > 23){
+		document.querySelector('#totalStars').firstElementChild.remove();
+	}
 }
 
 /*移除星星*/
@@ -146,3 +158,13 @@ function startCountTime(){
 let cards = document.querySelector('.deck');
 cards.addEventListener('click', clickCard);
 
+/*再玩一次*/
+function playAgain(){
+	window.close();
+	opener.location.reload();
+}
+
+/*退出游戏*/
+function outGame() {
+	window.close();
+}

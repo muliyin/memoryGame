@@ -125,3 +125,21 @@ h1 {
     margin: 0 10px;
     display: inline;
 }
+
+.buttons {
+    margin-top: 20px;
+}
+
+.again, .out {
+    border: 1px solid cadetblue;
+    border-radius: 20px;
+}
+
+.again {
+    background-color: lightskyblue;
+    margin-right: 10px;
+}
+
+.out {
+    background-color: aliceblue;
+}
