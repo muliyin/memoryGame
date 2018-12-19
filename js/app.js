@@ -10,6 +10,9 @@ let count = 0;  /*翻开卡片计数*/
 let matchedCount = 0;/*记录翻开的卡片对数*/
 let totalTime = 0;  /*记录总时长*/
 let begin = false;   /*判断用户是否开始游戏*/
+let startTime;
+let windowLeft = (screen.width - 300)/2;    /*弹出窗口左边距*/
+let windowTop = (screen.height - 250)/2;    /*弹出窗口上边距*/
 
 /*刷新页面重新开始游戏*/
 function restartGame() {
@@ -72,17 +75,24 @@ function ccc() {
 
 /*合上卡片*/
 function closeCard() {
+	/*有两张卡片翻开时设计不可点击*/
+	begin = false;
 	/*翻开卡片数重置为0*/
 	count = 0;
 	/*判断翻开卡片的图标是否一致，不一致延迟1.5s合上卡片*/
 	if (cardIcon1 !== cardIcon2) {
 		setTimeout(function () {
-			openCard1.classList.remove('open');
-			openCard2.classList.remove('show');
-			openCard2.classList.remove('open');
-			openCard1.classList.remove('show');
+			openCard1.classList.remove('open','show');
+			openCard2.classList.remove('open','show');
+			/*恢复点击*/
+			begin = true;
 		}, 1500)
 	} else {
+		begin = true;
+		openCard1.classList.remove('open','show');
+		openCard2.classList.remove('open','show');
+		openCard1.classList.add('match');
+		openCard2.classList.add('match');
 		/*一致则记录*/
 		matchedCount ++;
 		if (matchedCount === 8){
@@ -110,15 +120,16 @@ function clickCard(event) {
 		/*判断点击的是否为li卡片，以及卡片是否为合上状态*/
 		if (target.nodeName === 'LI' && target.classList.length === 1) {
 			/*li增加class，卡片处于翻开状态*/
-			target.classList.add('open');
-			target.classList.add('show');
-			moves++;
+			target.classList.add('open','show');
 			count += 1;
+			if (count === 2 ){
+				moves++;
+			}
 			document.querySelector('#game .moves').textContent = moves;
 		}
 		if (count === 2) {
 			closeCard();
-			if (moves === 24 || moves === 40){
+			if (moves === 12 || moves === 20){
 				removeStars();
 			}
 		}
@@ -128,7 +139,7 @@ function clickCard(event) {
 
 /*游戏成功*/
 function win() {
-	window.open('win.html','newwindow','height = 400, width = 600, top = 100, left = 400, toolbar = 0, menubar = 0, scrollbars = 0, resizable = no, location = no, status = no');
+	window.open('win.html','newwindow','height = 250, width = 300, left = '+windowLeft+',top = '+windowTop+',toolbar = no, menubar = no, scrollbars = no, resizable = no, location = no, status = no');
 }
 
 /*展示游戏结果*/
@@ -136,10 +147,10 @@ function showResults() {
 	document.querySelector('#totalMove').textContent = JSON.parse(sessionStorage.getItem('totalMove'));
 	document.querySelector('#totalTime').textContent = JSON.parse(sessionStorage.getItem('totalTime'));
 	let totalMove = JSON.parse(sessionStorage.getItem('totalMove'));
-	if (totalMove > 39){
+	if (totalMove > 19){
 		document.querySelector('#totalStars').firstElementChild.remove();
 		document.querySelector('#totalStars').firstElementChild.remove();
-	} else if (totalMove > 23){
+	} else if (totalMove > 11){
 		document.querySelector('#totalStars').firstElementChild.remove();
 	}
 }
@@ -167,4 +178,14 @@ function playAgain(){
 /*退出游戏*/
 function outGame() {
 	window.close();
+}
+
+/*判断游戏状态是否为开始*/
+function checkBegin() {
+	if (begin === false) {
+		document.querySelector('.start').setAttribute('disabled',true);
+		console.log(document.querySelector('.start').attributes);
+		startTime = setInterval(startCountTime,1000);
+	}
+	begin = true;
 }

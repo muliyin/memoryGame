@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
-    <meta name="description" content="">
+    <meta name="description" content="memoryGame">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet prefetch" href="./css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
@@ -22,23 +23,28 @@
         		<li><i class="icon-star"></i></li>
         	</ul>
 
-        	<span class="moves">0</span> Moves
+            <div class="game_moves">
+                <span class="moves">0</span> Moves
+            </div>
 
             <div class="spend_time">
                 耗时：<span class="time">0</span>s
             </div>
 
-            <div class="time_out" onclick="ccc()">
-                <i class="icon-apple"></i>&nbsp;暂停
+            <div class="game_buttons">
+                <div class="time_out" onclick="ccc()">
+                    <i class="icon-apple"></i>&nbsp;暂停
+                </div>
+
+                <div class="start" onclick="checkBegin()">
+                    <i class="icon-caret-right"></i>&nbsp;开始
+                </div>
+
+                <div class="restart" onclick="restartGame()">
+                    <i class="icon-repeat"></i>&nbsp;重新洗牌
+                </div>
             </div>
 
-            <div class="start" onclick="startTime = setInterval(startCountTime,1000);begin = true">
-                <i class="icon-caret-right"></i>&nbsp;开始
-            </div>
-
-            <div class="restart" onclick="restartGame()">
-        		<i class="icon-repeat"></i>&nbsp;重新洗牌
-        	</div>
 
         </section>
 

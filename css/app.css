@@ -31,17 +31,90 @@ body {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    color: #02b3e4;
+}
+
+/*
+定义动画
+*/
+@keyframes rotating {
+    0% {transform: none}
+    10% {transform: rotate(30deg)}
+    20% {transform: none}
+    30% {transform: rotate(-30deg)}
+    40% {transform: none}
+    50% {transform: rotate(-30deg)}
+    60% {transform: none}
+    70% {transform: rotate(-30deg)}
+    80% {transform: none}
+    90% {transform: rotate(-30deg)}
+    100% {transform: none}
 }
 
 /*
  * Styles for the deck of cards
  */
+@media screen and (min-width: 1025px){
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+    }
 
+    .score-panel {
+        font-size: 1.8em;
+    }
+
+    .deck {
+        width: 50%;
+        min-height: 680px;
+    }
+
+    .deck .card {
+        min-height: 125px;
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1024px){
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+    }
+
+    .deck {
+        width: 80%;
+        min-height: 760px;
+    }
+
+    .deck .card {
+        min-height: 130px;
+    }
+
+    .score-panel {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 719px){
+    h1 {
+        font-weight: bold;
+    }
+
+    .deck{
+        width: 90%;
+        min-height: 400px;
+    }
+
+    .deck .card {
+        min-height: 70px;
+    }
+
+    .score-panel {
+        font-size: 1.3em;
+    }
+}
 .deck {
-    width: 660px;
-    min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 3%;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
@@ -52,8 +125,7 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    width: 22%;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -72,13 +144,14 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 2em;
 }
 
 .deck .card.match {
     cursor: default;
     background: greenyellow;
-    font-size: 33px;
+    font-size: 2em;
+    animation: rotating 1s;
 }
 
 /*
@@ -87,7 +160,28 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 500px;
+    margin-bottom: 10px;
+}
+
+/*图标颜色定义*/
+.icon-star {
+    color: #02ccba;
+}
+
+.icon-caret-right {
+    color: #02ccba;
+}
+
+.icon-apple {
+    color: orange;
+}
+
+.icon-repeat {
+    color: greenyellow;
+}
+
+.game_moves {
+    display: inline-block;
     margin-bottom: 10px;
 }
 
@@ -143,3 +237,4 @@ h1 {
 .out {
     background-color: aliceblue;
 }
+
